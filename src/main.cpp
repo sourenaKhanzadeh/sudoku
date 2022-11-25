@@ -7,8 +7,8 @@ int main(){
     Sudoku sudoku;
     
     sudoku.read_file("su.txt");
-
-    std::cout << sudoku << std::endl;
-
+    Solver solver(sudoku);
+    solver.solve();
+    std::cout << solver;
     return 0;
 }
