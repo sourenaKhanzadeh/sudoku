@@ -6,6 +6,8 @@
 #include <sstream>
 #include <string>
 #include <fstream>
+#include <algorithm>
+#include <random>
 
 
 
@@ -27,6 +29,8 @@ public:
 
     bool isSolved() const;
     void read_file(std::string filename);
+
+    void generate(std::string tofile);
 
     friend std::ostream &operator<<(std::ostream &os, const Sudoku &sudoku);
 

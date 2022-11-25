@@ -83,3 +83,25 @@ std::ostream &operator<<(std::ostream &os, const Sudoku &sudoku) {
     }
     return os;
 }
+
+void Sudoku::generate(std::string tofile){
+    std::ofstream file(tofile);
+    std::vector<std::vector<int>> grid(9, std::vector<int>(9, 0));
+    std::vector<int> numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    // shuffle the numbers
+    std::shuffle(numbers.begin(), numbers.end(), std::mt19937(std::random_device()()));
+    for (int i = 0; i < 9; i++) {
+        grid[0][i] = numbers[i];
+    }
+    for (int i = 1; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            grid[i][j] = grid[i - 1][(j + 3) % 9];
+        }
+    }
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            file << grid[i][j] << " ";
+        }
+        file << std::endl;
+    }
+}
