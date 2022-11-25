@@ -4,6 +4,11 @@
 #include <sudoku/sudoku.h>
 
 int main(){
-    std::cout << "Hello World!" << std::endl;
+    Sudoku sudoku;
+    
+    sudoku.read_file("su.txt");
+
+    std::cout << sudoku << std::endl;
+
     return 0;
 }
